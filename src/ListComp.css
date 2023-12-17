@@ -1,0 +1,27 @@
+#list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+}
+
+#checkbox{
+    cursor: pointer;
+}
+
+.item-descr{
+    margin: 0px 20px;
+    flex: 2;
+    text-align: left;
+    
+}
+
+.delete-item-btn{
+    background-color: transparent;
+    border: none;
+}
+
+.delete-item-btn span{
+    color: rgb(215, 0, 0);
+    cursor: pointer;
+}
