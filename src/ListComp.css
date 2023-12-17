@@ -3,16 +3,44 @@
     justify-content: space-between;
     align-items: center;
     width: 400px;
+    margin-bottom: 10px;
 }
 
-#checkbox{
+.checkbox{
+    appearance: none; /* Remove default styles */
+    -webkit-appearance: none; /* For older versions of some browsers */
+    -moz-appearance: none; /* For Firefox */
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid darkgray;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
 }
+
+.checkbox:checked{
+    background-color: rgb(114, 219, 114);
+    border-color: rgb(114, 219, 114);
+}
+
+.checkbox::before {
+    content: '\2713'; /* Unicode checkmark character */
+    width: 20px;
+    height: 20px;
+    color: #fff; /* White color for the checkmark */
+    justify-content: center;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+  }
 
 .item-descr{
     margin: 0px 20px;
     flex: 2;
     text-align: left;
+    font-size: 1.2em;
     
 }
 
@@ -22,6 +50,8 @@
 }
 
 .delete-item-btn span{
-    color: rgb(215, 0, 0);
+    color: rgb(255, 0, 0);
     cursor: pointer;
+    font-size: 2em;
 }
+

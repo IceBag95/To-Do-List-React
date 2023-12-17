@@ -34,10 +34,12 @@ function ListComp(props){
     return(
         <div id='list-item'>
             <input  type="checkbox" 
-                    id={`checkbox${i}`} 
+                    id={`checkbox${i}`}
+                    className='checkbox' 
                     checked={filteredTaskArray[i].selected}
                     onChange={changeSelectedState}/> 
-            <p id={`item-descr${i}`} 
+            <p  style={filteredTaskArray[i].selected ? {color: 'rgb(98, 184, 98)'} : {color: 'black'}} 
+                id={`item-descr${i}`} 
                 className='item-descr'>
                     {filteredTaskArray[i].selected ? <s>{filteredTaskArray[i].task}</s> : filteredTaskArray[i].task}           
             </p>

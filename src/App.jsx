@@ -39,7 +39,7 @@ function App() {
   function onSearch(){
     const searchterm = document.getElementById('search-for-task').value
 
-    if (searchterm){
+    if (searchterm.trim()){
       const updatedFilteredTaskArray = taskArray.filter((currenttask) => {
                                                         return currenttask.task.toLowerCase().includes(searchterm.toLowerCase())
                                                       })
@@ -48,9 +48,14 @@ function App() {
     else setfilteredTaskArray(_ => [...taskArray])
   }
 
+  function onDeleteAll(){
+    setfilteredTaskArray([])
+    setTaskArray([])
+  }
+
   return (
     <div id='app-container'>
-      <h1>My Tasks:</h1>
+      <h1 id='App-Header'>My <span>React</span> Tasks:</h1>
       <div id='my-form'>
         <div className='input-container'>
           <div className='labels'>
@@ -64,7 +69,9 @@ function App() {
             <button className='button' 
                     id='add-new-task-button'
                     onClick={onAddTask}>
-                      Add task
+                    <span className="material-icons-round">
+                      add
+                    </span>
             </button> 
           </div>
         </div>
@@ -80,24 +87,36 @@ function App() {
             <button className='button' 
                     id='search-button'
                     onClick={onSearch}>
-                      Search
+              <span className="material-icons-round">
+                search
+              </span>
             </button>
           </div>
         </div>
       </div>
 
       <div id='list-container'>
-        <ul>
-          {filteredTaskArray.length > 0 ? filteredTaskArray.map((_,index) =>{
-                                            return <li key={`filtered${index}`}>
-                                                      {<ListComp  taskArray={taskArray} 
-                                                                  filteredTaskArray={filteredTaskArray}
-                                                                  idx={index} 
-                                                                  setOgArray={setTaskArray}
-                                                                  setFiletredOgArray={setfilteredTaskArray}/>}
-                                                    </li>
-                                            }) : null}
-        </ul>
+        <div id='ul-container'>
+          <ul>
+            {filteredTaskArray.length > 0 ? filteredTaskArray.map((_,index) =>{
+                                              return <li key={`filtered${index}`}>
+                                                        {<ListComp  taskArray={taskArray} 
+                                                                    filteredTaskArray={filteredTaskArray}
+                                                                    idx={index} 
+                                                                    setOgArray={setTaskArray}
+                                                                    setFiletredOgArray={setfilteredTaskArray}/>}
+                                                      </li>
+                                              }) : null}
+          </ul>
+        </div>
+        <div id="Delete-all-container">
+          <button id="delete-all" onClick={onDeleteAll}>
+            Delete all
+            <span class="material-icons-round">
+              delete_sweep
+            </span> 
+          </button>
+        </div>
       </div>
     
     </div>
