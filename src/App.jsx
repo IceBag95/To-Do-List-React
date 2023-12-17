@@ -112,11 +112,21 @@ function App() {
         <div id="Delete-all-container">
           <button id="delete-all" onClick={onDeleteAll}>
             Delete all
-            <span class="material-icons-round">
+            <span className="material-icons-round">
               delete_sweep
             </span> 
           </button>
         </div>
+      </div>
+
+      <div id="profile-link">
+          Meet me:
+          <a href="https://github.com/IceBag95">
+              <span className="material-icons-round" id='profile-icon'>
+                account_circle
+              </span>
+              <u>GitHub Page</u>
+          </a>
       </div>
     
     </div>
