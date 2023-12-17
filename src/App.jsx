@@ -121,7 +121,7 @@ function App() {
 
       <div id="profile-link">
           Meet me:
-          <a href="https://github.com/IceBag95">
+          <a href="https://github.com/IceBag95" target="_blank" rel="noopener noreferrer">
               <span className="material-icons-round" id='profile-icon'>
                 account_circle
               </span>
