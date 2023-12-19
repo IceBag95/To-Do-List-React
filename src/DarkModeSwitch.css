@@ -3,7 +3,7 @@
 #background{
     display: flex;
     width: 220px;
-    height: 60px;
+    height: fit-content;
     background-color: transparent;
     align-items: center;
     justify-content: left;
@@ -11,6 +11,7 @@
     top: 10px;
     right: 20px;
     gap: 20px;
+    transition: ease 0.3s;
 
 }
 
