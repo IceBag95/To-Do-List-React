@@ -1,8 +1,12 @@
 import { useState } from 'react'
 import './App.css'
 import ListComp from './ListComp'
+import DarkModeSwitch from './DarkModeSwitch'
+import lightBG from './assets/AppBackground.png'
+import darkBG from './assets/AppBackgroundDark.png'
 
 function App() {
+  const [darkModeClicked, setDarkModeClicked] = useState(false)
   const [totalTasks, setTotalTasks] = useState(0)
   const [taskArray, setTaskArray] = useState([])
   const [filteredTaskArray, setfilteredTaskArray] = useState([...taskArray]);
@@ -24,8 +28,8 @@ function App() {
       }
 
       setTotalTasks(t => t + 1)
-      setTaskArray(t => [...t, newTask])
-      setfilteredTaskArray(f => [...f, newTask])
+      setTaskArray(t => [newTask ,...t])
+      setfilteredTaskArray(f => [newTask, ...f])
     }
     else taskInput.value = ""
   }
@@ -54,18 +58,24 @@ function App() {
   }
 
   return (
-    <div id='app-container'>
+    <div id='app-container' style={darkModeClicked ? {backgroundImage: `url(${darkBG})`} : {backgroundImage: `url(${lightBG})`}}>
+      <DarkModeSwitch clicked={darkModeClicked} setClicked={setDarkModeClicked}/>
       <h1 id='App-Header'>My <span>React</span> Tasks:</h1>
       <div id='my-form'>
         <div className='input-container'>
           <div className='labels'>
-            <label htmlFor="new-task-input">New Task:</label>
+            <label  className='label'
+                    htmlFor="new-task-input" 
+                    style={darkModeClicked ? {color: 'white'} : {color: 'black'}} >
+              New Task:
+            </label>
           </div>
           <div className='inputs'>
             <input  type="text" 
                     id='new-task-input' 
                     className='input'
-                    onKeyDown={(event) => onKeyDownAddTaskInput(event)}/>
+                    onKeyDown={(event) => onKeyDownAddTaskInput(event)} 
+                    style={darkModeClicked ? {color: 'white'} : {color: 'black'}} />
             <button className='button' 
                     id='add-new-task-button'
                     onClick={onAddTask}>
@@ -77,13 +87,18 @@ function App() {
         </div>
         <div className='input-container'>
           <div className='labels'>  
-            <label htmlFor="search-for-task">Search Task:</label>
+            <label  className='label'
+                    htmlFor="search-for-task"
+                    style={darkModeClicked ? {color: 'white'} : {color: 'black'}} >
+              Search Task:
+            </label>
           </div>
           <div className='inputs'>
             <input  type="text" 
                     id='search-for-task' 
                     className='input'
-                    onChange={onSearch}/>
+                    onChange={onSearch}
+                    style={darkModeClicked ? {color: 'white'} : {color: 'black'}} />
             <button className='button' 
                     id='search-button'
                     onClick={onSearch}>
@@ -95,7 +110,7 @@ function App() {
         </div>
       </div>
 
-      <div id='list-container'>
+      <div id='list-container' style={darkModeClicked ? {backgroundColor: 'rgb(80, 80, 80)'} : {backgroundColor: 'white'}}>
         <div id='ul-container'>
           <ul>
             {filteredTaskArray.length > 0 ? filteredTaskArray.map((_,index) =>{
@@ -104,7 +119,8 @@ function App() {
                                                                     filteredTaskArray={filteredTaskArray}
                                                                     idx={index} 
                                                                     setOgArray={setTaskArray}
-                                                                    setFiletredOgArray={setfilteredTaskArray}/>}
+                                                                    setFiletredOgArray={setfilteredTaskArray}
+                                                                    dmclicked={darkModeClicked}/>}
                                                       </li>
                                               }) : null}
           </ul>

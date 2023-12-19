@@ -18,6 +18,7 @@
     width: 18px;
     height: 18px;
     border-radius: 50%;
+    background-color: white;
 }
 
 .checkbox:checked{
@@ -34,7 +35,7 @@
     text-align: center;
     line-height: 20px;
     font-size: 14px;
-  }
+}
 
 .item-descr{
     margin: 0px 20px;

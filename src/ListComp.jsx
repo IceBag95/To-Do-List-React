@@ -37,8 +37,11 @@ function ListComp(props){
                     id={`checkbox${i}`}
                     className='checkbox' 
                     checked={filteredTaskArray[i].selected}
-                    onChange={changeSelectedState}/> 
-            <p  style={filteredTaskArray[i].selected ? {color: 'rgb(98, 184, 98)'} : {color: 'black'}} 
+                    onChange={changeSelectedState}
+                    //style={props.dmclicked ?  {color: 'white'} : {color: 'rgb(80, 80, 80)'} }
+                    /> 
+            <p  style = {filteredTaskArray[i].selected ? {color: 'rgb(98, 184, 98)'} :
+                        props.dmclicked ? {color: 'white'} : {color: 'black'}} 
                 id={`item-descr${i}`} 
                 className='item-descr'>
                     {filteredTaskArray[i].selected ? <s>{filteredTaskArray[i].task}</s> : filteredTaskArray[i].task}           
